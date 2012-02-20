@@ -1,0 +1,22 @@
+This project uses maven for compilation.  To compile the project use the following.
+
+mvn clean install
+
+To use the library, you need to include the following in your pom.xlm
+
+  <repositories>
+    <repository>
+      <id>snaphot-repo</id>
+      <url>https://raw.github.com/Raphfrk/maven-repo/master/snapshots</url>
+    </repository>
+  </repositories>
+
+and add the following dependency
+
+  <dependency>
+    <groupId>com.raphfrk</groupId>
+    <artifactId>shplib</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <scope>compile</scope>
+  </dependency>
+

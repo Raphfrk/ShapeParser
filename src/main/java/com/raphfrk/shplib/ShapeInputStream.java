@@ -5,6 +5,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.zip.ZipFile;
 
+import com.raphfrk.shplib.dbf.DBFInputStream;
+import com.raphfrk.shplib.dbf.DBFRecord;
+import com.raphfrk.shplib.shp.SHPInputStream;
+import com.raphfrk.shplib.util.Utils;
+
 public class ShapeInputStream {
     
 	private final ZipFile shpZipFile;
@@ -13,6 +18,18 @@ public class ShapeInputStream {
 	private final InputStream dbfInputStreamRaw;
 	private final SHPInputStream shpInputStream;
 	private final DBFInputStream dbfInputStream;
+	
+	/**
+	 * Constructs a ShapeInputStream.  The file parameter can be a directory or a zip file.<br>
+	 * <br>
+	 * The .shp and .dbf files are parsed to extract the Shapes.
+	 * 
+	 * @param file the zip file or directory
+	 * @throws IOException
+	 */
+	public ShapeInputStream(String filename) throws IOException {
+		this(new File(filename));
+	}
 	
 	/**
 	 * Constructs a ShapeInputStream.  The file parameter can be a directory or a zip file.<br>
@@ -38,6 +55,10 @@ public class ShapeInputStream {
 		}
 		shpInputStream = new SHPInputStream(shpInputStreamRaw);
 		dbfInputStream = new DBFInputStream(dbfInputStreamRaw);
+	}
+	
+	public DBFRecord readDBFRecord() throws IOException {
+		return dbfInputStream.readRecord();
 	}
 	
 	/**

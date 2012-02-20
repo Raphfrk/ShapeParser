@@ -1,4 +1,4 @@
-package com.raphfrk.shplib;
+package com.raphfrk.shplib.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
+
+import com.raphfrk.shplib.ShapeException;
 
 public class Utils {
 	
